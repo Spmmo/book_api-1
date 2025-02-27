@@ -1,6 +1,19 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS, cross_origin
 
+
+from pymongo.mongo_client import MongoClient
+from pymongo.server_api import ServerApi
+uri = "mongodb+srv://suphamat00:<db_password>@cluster0.4fw6q.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+# Create a new client and connect to the server
+client = MongoClient(uri, server_api=ServerApi('1'))
+# Send a ping to confirm a successful connection
+try:
+    client.admin.command('ping')
+    print("Pinged your deployment. You successfully connected to MongoDB!")
+except Exception as e:
+    print(e)
+
 # Sample data (in-memory database for simplicity)
 books = [
     
